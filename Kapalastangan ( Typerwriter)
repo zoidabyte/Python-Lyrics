@@ -1,0 +1,58 @@
+import sys
+import time
+import random
+
+WHITE = '\033[97m'
+RED = '\033[91m'
+YELLOW = '\033[93m'
+BLUE = '\033[94m'
+RESET = '\033[0m'
+
+def type_line(text, duration, pause):
+    words = text.split()
+    char_count = len(text)
+    delay = duration / char_count if char_count > 0 else 0.1
+    
+    for word in words:
+        clean_word = word.lower().strip("'.,")
+        
+        if clean_word in ["mamamatay", "nagsisisi", "kalapastangan", "gugunawin", "ibigin"]:
+            sys.stdout.write(RED)
+        elif clean_word in ["ikaw", "kita", "ka"]:
+            sys.stdout.write(BLUE)
+        else:
+            sys.stdout.write(WHITE)
+            
+        for char in word:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(max(0.01, delay + random.uniform(-0.015, 0.02)))
+            
+        sys.stdout.write(" ") 
+        sys.stdout.flush()
+
+    print()
+    time.sleep(pause)
+
+def main():
+    sys.stdout.write(WHITE)
+    time.sleep(1)
+
+    lyrics = [
+        ("Mamamatay akong nakangiti", 2.2, 1.2),
+        ("Kapag Ikaw ang nasa aking tabi", 5, 1.2),
+        ("Mabubuhay akong nagsisisi",3, 0.8),
+        ("Kapag 'sang araw hindi Kita mapapangiti", 4, 1.5),
+        ("Kalapastangan ang 'di Ka ibigin", 3.2,0.8),
+        ("Kalokohan ang 'di Ka isipin", 3.5,1.2),
+        ("Kung ang mundo ay biglang gugunawin", 3.0, 0.8),
+        ("Ikaw ang una kong hahanapin", 4, 2.0),
+    ]
+
+    for text, duration, pause in lyrics:
+        type_line(text, duration, pause)
+    
+    sys.stdout.write(RESET)
+
+if __name__ == "__main__":
+    main()
