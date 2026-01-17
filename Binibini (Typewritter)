@@ -1,0 +1,49 @@
+import sys
+import time
+import random
+
+# colors
+PURPLE = '\033[95m'
+RED = '\033[91m'
+
+def type_line(text, duration, pause):
+    delay = duration / len(text)
+    i = 0
+
+    while i < len(text):
+        if text[i:i+8] == "Mahal ko":
+            sys.stdout.write(RED)
+            for c in "Mahal ko":
+                sys.stdout.write(c)
+                sys.stdout.flush()
+                time.sleep(max(0.01, delay + random.uniform(-0.02, 0.03)))
+            sys.stdout.write(PURPLE)
+            i += 8
+        else:
+            sys.stdout.write(text[i])
+            sys.stdout.flush()
+            time.sleep(max(0.01, delay + random.uniform(-0.02, 0.03)))
+            i += 1
+
+    print()
+    time.sleep(pause)
+
+def main():
+    sys.stdout.write(PURPLE)
+
+    lines = [
+        ("Isayaw mo ako", 2.5, 3),
+        ("sa gitna ng ulan, Mahal ko", 4, 3),
+        ("kapalit man nito'y buhay ko", 3.5, 4),
+        ("gagawin ang lahat para sayo", 4, 3),
+        ("alam kong mahal mo na'rin ako", 4, 2),
+        ("WHOOOOOOOOOOOOOOOOOOOOOOOOOAAAAAAAAAAAAAAA", 12, 2),
+    ]
+
+    time.sleep(1)
+
+    for text, duration, pause in lines:
+        type_line(text, duration, pause)
+
+if __name__ == "__main__":
+    main()
