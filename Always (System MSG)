@@ -1,0 +1,42 @@
+import tkinter as tk
+from tkinter import messagebox
+import time
+
+def main():
+    root = tk.Tk()
+    root.withdraw()
+    root.attributes("-topmost", True)
+
+    lyrics = [
+        "And I'll be here",
+        "Cause we both know how it goes",
+        "I don't want things to change",
+        "I pray they stay the same, always",
+        "And I don't care",
+        "If you're with somebody else",
+        "I'll give you time and space",
+        "Just know I'm not a phase",
+        "I'm always",
+        "ways",
+        "ways~",
+        "Always",
+        "ways",
+        "ways~",
+         "I'm always",
+        "ways",
+        "ways~",
+        "Always",
+        "ways",
+        "ways~",
+    ]
+    for line in lyrics:
+
+        messagebox.showinfo("Always", line)
+        
+
+if __name__ == "__main__":
+    main()
+
+
+
+
